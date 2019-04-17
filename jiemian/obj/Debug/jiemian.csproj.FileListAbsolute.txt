@@ -1,0 +1,9 @@
+D:\VS.program\jiemian\bin\Debug\jiemian.exe.config
+D:\VS.program\jiemian\bin\Debug\jiemian.exe
+D:\VS.program\jiemian\bin\Debug\jiemian.pdb
+D:\VS.program\jiemian\obj\Debug\jiemian.csprojAssemblyReference.cache
+D:\VS.program\jiemian\obj\Debug\jiemian.Properties.Resources.resources
+D:\VS.program\jiemian\obj\Debug\jiemian.csproj.GenerateResource.cache
+D:\VS.program\jiemian\obj\Debug\jiemian.csproj.CoreCompileInputs.cache
+D:\VS.program\jiemian\obj\Debug\jiemian.exe
+D:\VS.program\jiemian\obj\Debug\jiemian.pdb
