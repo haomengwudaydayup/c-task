@@ -115,8 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="project1.c" />
-    <ClCompile Include="project2.c" />
+    <ClCompile Include="project1.c">
+      <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</SDLCheck>
+    </ClCompile>
+    <ClCompile Include="project2.c">
+      <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</SDLCheck>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

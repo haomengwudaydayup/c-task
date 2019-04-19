@@ -6,6 +6,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include<Windows.h>
 
 extern int g_val;//声明外部符号
@@ -49,7 +50,7 @@ int main()
 	system("pause");
 	return 0;
 }
-*/
+
 //常量
 int main()
 {
@@ -72,6 +73,46 @@ int main()
 		printf("枚举元素:%d\n", s);
 	
 
+	system("pause");
+	return 0;
+}
+
+int main()
+{
+	//字符数组
+	char str[] = "bit";//C语言没有字符串类型，因此只能用字符数组来构建字符串
+	char str1[] = { 'b','i','t','\0' };
+	char str2[10];//如果定义的话，必须写出大小
+	/*
+	用 scanf 给字符数组赋值不同于对数值型数组赋值。
+	给数值型数组赋值时只能用 for 循环一个一个地赋值，不能整体赋值。
+	而给字符数组赋值时可以直接赋值，不需要使用循环。
+	此外从键盘输入后，系统会自动在最后添加结束标志符 '\0'。
+	但是用 scanf 输入字符串时有一个地方需要注意：如果输入的字符串中带空格，
+	比如“i love you” 它会输出: i,因为默认空格为结束符！
+	*/
+/*
+	printf("str = %s\n", str);//输出方面也有所不同
+	printf("str1 = %s\n", str1);
+	gets(str2);
+	//scanf_s("%s", str2);//这里vs有问题，不能这样输入字符串，但方法正确
+	printf("str2 = %s\n", str2);//输出也只是写数组的头地址就可以了
+	system("pause");
+	return 0;
+}
+*/
+//转义字(\)
+int main()
+{
+	// \t \n \v 
+	printf("www:\\test.\\.com\n");
+//	printf("%d\n",sizeof(c:\test\328\test.c));
+	double a[3][6];
+
+	printf("a = %d\n", sizeof(a));
+	printf("*a = %d\n", sizeof(*a));
+	printf("**a = %d\n", sizeof(**a));
+//	printf("***a = %d\n", sizeof(*(**a)));
 	system("pause");
 	return 0;
 }
