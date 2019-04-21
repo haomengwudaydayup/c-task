@@ -1,2 +1,3 @@
 ﻿  test1.c
-  Project5.vcxproj -> D:\VS.program\c.code\Project5\Debug\test_4_21.exe
+d:\vs.program\c.code\project5\test1.c(64): warning C4013: “sqrt”未定义；假设外部返回 int
+  Project5.vcxproj -> D:\VS.program\c.code\Project5\Debug\Project5.exe
