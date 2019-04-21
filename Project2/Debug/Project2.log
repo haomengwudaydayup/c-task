@@ -1,3 +1,0 @@
-﻿  project1.cpp
-project2.obj : error LNK2005: _main 已经在 project1.obj 中定义
-D:\VS.program\Project2\Debug\Project2.exe : fatal error LNK1169: 找到一个或多个多重定义的符号

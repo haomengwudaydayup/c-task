@@ -1,3 +1,0 @@
-﻿  project1.cpp
-d:\vs.program\project.sum\project1\project1\project1.cpp(57): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-  Project1.vcxproj -> D:\VS.program\project.sum\Project1\Project1\Debug\Project1.exe
