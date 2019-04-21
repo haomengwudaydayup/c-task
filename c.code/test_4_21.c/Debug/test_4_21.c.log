@@ -1,0 +1,3 @@
+﻿  test1.c
+d:\vs.program\c.code\test_4_21.c\test1.c(64): warning C4013: “sqrt”未定义；假设外部返回 int
+  test_4_21.c.vcxproj -> D:\VS.program\c.code\test_4_21.c\Debug\test_4_21.c.exe
