@@ -1,0 +1,3 @@
+﻿  work.c
+d:\vs.program\c.code\project15\work.c(194): warning C4087: “getchar”: 用“void”参数列表声明
+  Project15.vcxproj -> D:\VS.program\c.code\Project15\Debug\Project15.exe

@@ -1,10 +1,12 @@
 /*
-	写一个猜数字游戏
+	test_4_30.c 第五次练习
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 #include<string.h>
+#include<math.h>
 
 //void menu(void)
 //{
@@ -14,7 +16,7 @@
 //	printf("*********** 0、exit ***********\n");
 //	printf("*******************************\n");
 //}
-
+//
 //void games(void)
 //{
 //	//游戏玩法核心
@@ -121,14 +123,27 @@ int main()
 	for (i = 0; i < 10000000; i++)//一千万零一次循环
 	{
 		int count = 1;
+		int temp = i;
+		int sum = 0;
 		//1、先计算位数-N
-		if (i / 10)
+		
+		while(temp /= 10)//temp=0时退出
 		{
 			count++;
 		}
 
+		temp = i;//temp再赋值
+		
 		//2、计算每个位数的N次方和
-
+		while (temp)
+		{
+			sum += pow(temp % 10, count);
+			temp = temp / 10;
+		}
+		if (i == sum)
+		{
+			printf("%d ", sum);
+		}
 	}
 	system("pause");
 	return 0;

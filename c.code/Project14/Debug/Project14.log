@@ -1,1 +1,3 @@
-﻿  Project14.vcxproj -> D:\VS.program\c.code\Project14\Debug\Project14.exe
+﻿  test_4_30.cpp
+d:\vs.program\c.code\project14\test_4_30.cpp(139): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+  Project14.vcxproj -> D:\VS.program\c.code\Project14\Debug\Project14.exe
