@@ -76,6 +76,7 @@ void test1(void)
 //	system("pause");
 //	return 0;
 //}
+<<<<<<< HEAD
 //int main()
 //{
 //	int a = 10;
@@ -136,3 +137,19 @@ void test1(void)
 //	system("pause");
 //	return 0;
 //}
+=======
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int c = 1;
+	if (a == 20)
+		if (b == 20)
+			c = 30;
+		else
+			c = 40;
+	printf("c = %d\n", c);
+	system("pause");
+	return 0;
+}
+>>>>>>> 8452c07a51e1477213dae4f8b171c4e4635a6376
