@@ -67,7 +67,7 @@ void map::printMap(int score)
 	}
 	strcat_s(printStr, lenth, "\n");
 	sprintf_s(strscore, "%3d", score);
-	strcat_s(printStr, lenth, "目前得分：");
+	strcat_s(printStr, lenth, "目前得分:");
 	strcat_s(printStr, lenth, strscore);
 	strcat_s(printStr, lenth, "  方向键移动  P键暂停");
 	system("cls");
