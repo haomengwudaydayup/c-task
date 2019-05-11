@@ -1,2 +1,2 @@
 ﻿  test_5_5.practice.cpp
-  Project17.vcxproj -> D:\VS.program\c.code\Project17\Debug\Project17.exe
+LINK : fatal error LNK1104: 无法打开文件“testadd.lib”
