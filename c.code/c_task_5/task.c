@@ -71,7 +71,7 @@ int main()
 	return 0;
 }
 
-#elif 0
+#elif 1
 //第四道题
 //初始化数组
 void Print(int* a, int lengh)

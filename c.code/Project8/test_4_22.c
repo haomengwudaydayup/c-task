@@ -1,3 +1,7 @@
+/*
+	第四次C语言作业
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 //#include<math.h>

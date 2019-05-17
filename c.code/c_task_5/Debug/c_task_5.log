@@ -1,5 +1,2 @@
 ﻿  task.c
-d:\vs.program\c.code\c_task_5\task.c(186): warning C4476: "printf": 格式说明符中的类型字段字符“\xe4”未知
-d:\vs.program\c.code\c_task_5\task.c(186): warning C4474: printf: 格式字符串中传递的参数太多
-  d:\vs.program\c.code\c_task_5\task.c(186): note: 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
   c_task_5.vcxproj -> D:\VS.program\c.code\c_task_5\Debug\c_task_5.exe

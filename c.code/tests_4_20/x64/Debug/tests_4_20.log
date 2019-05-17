@@ -1,2 +1,4 @@
 ﻿  test1.c
-  tests_4_20.vcxproj -> D:\VS.program\c.code\tests_4_20\x64\Debug\tests_4_20.exe
+d:\vs.program\c.code\tests_4_20\test1.c(79): error C2059: 语法错误:“<<”
+d:\vs.program\c.code\tests_4_20\test1.c(155): error C2059: 语法错误:“>>”
+d:\vs.program\c.code\tests_4_20\test1.c(155): error C2059: 语法错误:“数字上的错误后缀”
