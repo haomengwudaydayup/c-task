@@ -1,3 +1,4 @@
-﻿  test.c
+﻿  game.c
 d:\vs.program\c.code\project28\game.h(1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+d:\vs.program\c.code\project28\game.c(45): warning C4013: “rand”未定义；假设外部返回 int
   Project28.vcxproj -> D:\VS.program\c.code\Project28\Debug\Project28.exe

@@ -133,6 +133,8 @@ char Is_win(char broad[ROW][COL], int row, int col)
 	//if (i == ROW-1 && j == COL-1)
 	//	return 'P';
 	//return ' ';
+#if 0
+
 	int i = 0, j = 0;
 
 	for (i = 0; i < ROW; i++)
@@ -151,6 +153,90 @@ char Is_win(char broad[ROW][COL], int row, int col)
 		return 'P';
 	}
 	return ' ';
+
+#elif 1
+	int i = 0, j = 0;
+	int count1 = 0;
+	int count2 = 0;
+	//这是判断行列赢得情况
+	for (i = 0; i < row; i++)
+	{
+
+		for (j = 0; j < col; j++)
+		{
+
+			if(broad[i][j] == ' ')//如果是空的话，跳出
+				break;
+			if (broad[i][j] == 'X')
+				count1++;
+			if (broad[i][j] == 'Y')
+				count2++;
+			if (count1 == col)
+				return 'X';
+			if (count2 == col)
+				return 'Y';
+		}
+	}
+	//这是判断数列赢得情况
+	for (i = 0; i < row; i++)
+	{
+
+		for (j = 0; j < col; j++)
+		{
+			if (broad[j][i] == ' ')//如果是空的话，跳出
+				break;
+			if (broad[j][i] == 'X')
+				count1++;
+			if (broad[j][i] == 'Y')
+				count2++;
+			if (count1 == col+col)
+				return 'X';
+			if (count2 == col+col)
+				return 'Y';
+		}
+	}
+	//这是对角线形式赢得情况
+	for (i = 0; i < row; i++)
+	{
+		if (broad[i][i] == ' ')//如果是空的话，跳出
+			break;
+		if (broad[i][i] == 'X')
+			count1++;
+		if (broad[i][i] == 'Y')
+			count2++;
+		if (count1 == col + col+ col)
+			return 'X';
+		if (count2 == col + col +col)
+			return 'Y';
+	}
+
+	//这是对角线形式赢得情况
+	for (i = 0; i < row; i++)
+	{
+		if (broad[i][col -1 -i] == ' ')//如果是空的话，跳出
+			break;
+		if (broad[i][col -1 -i] == 'X')
+			count1++;
+		if (broad[i][col -1 -i] == 'Y')
+			count2++;
+		if (count1 == col + col + col +col)
+			return 'X';
+		if (count2 == col + col + col +col)
+			return 'Y';
+	}
+
+
+
+	//这是判断平局得情况
+	if (is_Fill(broad, ROW, COL) == 1)
+	{
+		return 'P';
+	}
+	//这是继续的情况
+	return ' ';
+
+
+#endif //0
 }
 
 int is_Fill(char broad[ROW][COL], int row, int col)
