@@ -37,7 +37,7 @@ void game()
 
 	//´æ·ÅÀ×
 	Desposit_Mine(mine_broad, ROW, COL);
-	Print_broad(mine_broad, ROW, COL);//test1
+	//Print_broad(mine_broad, ROW, COL);//test1
 
 	//ÅÅÀ×
 	Mine_Clean(test, show_broad, mine_broad, ROW, COL);

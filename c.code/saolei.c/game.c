@@ -22,7 +22,7 @@ void Init_broad(char arr_str[ROWS][COLS], int row, int col, char set)
 void Print_broad(char arr_str[ROWS][COLS], int row, int col)
 {
 	//¥Ú”°±Ì
-	//system("cls");
+	system("cls");
 	int i = 0, j = 0;
 	for (i = 0; i <= row; i++)
 	{

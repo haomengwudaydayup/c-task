@@ -12,7 +12,7 @@
 #define ROW 9
 #define COL 9
 
-#define MINENUM 10
+#define MINENUM 15
 #define UN_MINENUM (ROW*COL - MINENUM)
 
 void Init_broad(char arr_str[ROWS][COLS], int row, int col, char set);//³õÊ¼»¯º¯Êý
