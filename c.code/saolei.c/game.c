@@ -71,8 +71,7 @@ void Mine_Clean(char test[ROWS][COLS], char show_broad[ROWS][COLS], char mine_br
 
 	while (unmine_num)//查找循环
 	{
-
-
+		
 		printf("请输入您想输入的坐标>");
 		scanf_s("%d%d", &x, &y);
 
@@ -83,10 +82,8 @@ void Mine_Clean(char test[ROWS][COLS], char show_broad[ROWS][COLS], char mine_br
 
 				if (mine_broad[x][y] == '1' && unmine_num == UN_MINENUM)//防止第一次被炸死
 				{
-
 					Judge_F_mine(mine_broad, x, y, row, col);
 					unmine_num--;
-					//	Print_broad(mine_broad, ROW, COL);//test1
 				}
 
 
@@ -100,11 +97,10 @@ void Mine_Clean(char test[ROWS][COLS], char show_broad[ROWS][COLS], char mine_br
 				{
 					/*char number = Calculate_number(mine_broad, x, y);//正常运行的情况
 					show_broad[x][y] = number + '0';*/
-
+					
 					Clean_Mine(show_broad, mine_broad, x, y);
-					//printf("\nunmine_num = %d\n", count);
 					unmine_num -= Computer_num(test, show_broad, row, col);
-					printf("\numine_num = %d\n", unmine_num);
+				
 				}
 				Print_broad(show_broad, ROW, COL);
 			}
@@ -119,7 +115,6 @@ void Mine_Clean(char test[ROWS][COLS], char show_broad[ROWS][COLS], char mine_br
 			printf("坐标错误，请重新输入！\n");
 		}
 		//Print_broad(show_broad, ROW, COL);//打印一下
-
 	}
 
 	if (unmine_num == 0)
@@ -160,44 +155,6 @@ void Judge_F_mine(char mine_broad[ROWS][COLS], int x, int y, int row, int col)
 	return;
 }
 
-
-
-//void Clean_Mine(char show_broad[ROWS][COLS], char mine_broad[ROWS][COLS], int x, int y, int* p)    //扩展函数
-//{
-//
-//	int i = -1;
-//	int j = -1;
-//	for (i = -1; i < 2; i++)      //边界
-//	{
-//		for (j = -1; j < 2; j++)
-//		{
-//			if (i != 0 || j != 0)      // 避免排到自己注意此处的逻辑关系
-//			{
-//				if (x + i >= 1 && x + i <= ROWS && y + j >= 1 && y + j <= COLS)     //x y坐标是否合法
-//				{
-//					if (show_broad[x + i][y + j] == '*' && mine_broad[x + i][y + j] != '1')
-//					{
-//
-//						int count = Calculate_number(mine_broad, x + i, y + j);//
-//						if (count != 0)
-//						{
-//							show_broad[x + i][y + j] = count + '0';
-//							(*p)++;
-//						}
-//						else
-//						{
-//							show_broad[x + i][y + j] = '0';
-//							(*p)++;
-//							Clean_Mine(show_broad, mine_broad, x + i, y + j, p);
-//						}
-//
-//					}
-//
-//				}
-//			}
-//		}
-//	}
-//}
 
 void Clean_Mine(char show_broad[ROWS][COLS], char mine_broad[ROWS][COLS], int x, int y)
 {
@@ -310,18 +267,3 @@ int Computer_num(char test[ROWS][COLS], char show_broad[ROWS][COLS], int row, in
 	}
 	return count;
 }
-
-//int Computer_num( const char show_broad[ROWS][COLS], int row, int col)
-//{
-//	int count = 0;
-//	int i = 0, j = 0;
-//	for (i = 1; i < row; i++)
-//	{
-//		for (j = 1; j < col; j++)
-//		{
-//			if (show_broad[i][j] != '*')
-//				count++;
-//		}
-//	}
-//	return count;
-//}

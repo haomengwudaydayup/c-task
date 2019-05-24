@@ -31,7 +31,7 @@ void game()
 	//初始化
 	Init_broad(mine_broad, ROWS, COLS, '0');
 	Init_broad(show_broad, ROWS, COLS, '*');
-	Init_broad(test, ROWS, COLS, 'M');
+	Init_broad(test, ROWS, COLS, 'M');//用来统计非雷个数--效率变低
 	
 	Print_broad(show_broad, ROW, COL);
 
