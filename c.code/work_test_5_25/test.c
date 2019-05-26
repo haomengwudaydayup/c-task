@@ -98,10 +98,10 @@ int main()
 int main()
 {
 	//int *pa = &a, 对指针解引用(*),就是解引用int 大小的
-	int a = 0x11223344;//1010
-	char *pstr = (char*)&a;
+	int a = 4095;//1010
+	int *pstr = &a;
 	printf("%d\n", a);
-	*pstr = 0x99;
+	*pstr = 6;
 	printf("%d\n", a);
 	system("pause");
 	return 0;
