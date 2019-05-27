@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<limits.h>
-
+#include<string.h>
 
 #if 0
 //unsigned int reverse_bit(unsigned int value); 
@@ -111,39 +111,58 @@ int main()
 	return 0;
 }
 
-#elif 0
+#elif 1
 //未完成
 //有一个字符数组的内容为:"student a am i", 
 //请你将数组的内容改为"i am a student".
 //要求：
 //不能使用库函数。
-//只能开辟有限个空间（空间个数和字符串的长度无关）。
-int My_strlen(char *s)
-{
-	int count = 0;
-	/*while (*s != '\0')
-	{
-		count++;
-	}*/
-	return 14;
-}
 
-void str_reverse(char *s)
+
+void Apart_reverse(char *s, int left, int right)
 {
-	int len = My_strlen(s) - 1;
-	int i = 0;
-	for (i, len; i < len; i++, len--)
+	
+	for (left, right; left < right; left++, right--)
 	{
 		char tmp = 0;
-		tmp = s[i];
-		s[i] = s[len];
-		s[len] = tmp;
+		tmp = s[left];
+		s[left] = s[right];
+		s[right] = tmp;
 	}
 
 }
+
+
+void str_reverse(char *s)
+{
+	//student am a i
+	int left = 0;
+	int right = 0;
+	int i = 0;
+	for (i; s[i]; i++)
+	{
+		if (s[i] != ' ')
+		{
+			right = i;
+		}
+		
+		else if (left < right)
+		{
+			Apart_reverse(s, left, right);
+	
+		}
+	
+		if (s[i] == ' ')
+		{
+			left = i + 1;
+		}
+	}
+	Apart_reverse(s, 0, i - 1);
+}
+
 int main()
 {
-	char str[20] = "student a am i";
+	char str[30] = "student a am i";
 	printf("%s\n", str);
 	str_reverse(str);
 	printf("反转后:\n");
