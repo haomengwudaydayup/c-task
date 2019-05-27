@@ -1,0 +1,2 @@
+﻿  test.c
+d:\vs.program\c.code\test_5_27\test.c : fatal error C1041: 无法打开程序数据库“D:\VS.program\c.code\test_5_27\Debug\vc141.pdb”；如果要将多个 CL.EXE 写入同一个 .PDB 文件，请使用 /FS
