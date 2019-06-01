@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
 #include<limits.h>
@@ -32,7 +33,7 @@ int main()
 	printf("请输入>");
 	scanf_s("%d", &value);
 	value1 = reverse_bit(value);
-	printf("value = %d\nvalue1 = %ld\n", value, value1);
+	printf("value = %d\nvalue1 = %u\n", value, value1);
 	system("pause"); 
 	return 0;
 }
@@ -54,7 +55,7 @@ int main()
 	return 0;
 }
 
-#elif 0
+#elif 1
 //3.编程实现： 
 //一组数据中只有一个数字出现了一次。其他所有数字都是成对出现的。请找出这个数字。（使用位运算）
 void Print(int *a, int len, int *x, int *y)
@@ -112,13 +113,12 @@ int main()
 }
 
 #elif 1
-//未完成
 //有一个字符数组的内容为:"student a am i", 
 //请你将数组的内容改为"i am a student".
 //要求：
 //不能使用库函数。
 
-
+//交换函数
 void Apart_reverse(char *s, int left, int right)
 {
 	
@@ -132,7 +132,7 @@ void Apart_reverse(char *s, int left, int right)
 
 }
 
-
+//处理函数
 void str_reverse(char *s)
 {
 	//student am a i
@@ -146,7 +146,7 @@ void str_reverse(char *s)
 			right = i;
 		}
 		
-		else if (left < right)
+		if (left < right)
 		{
 			Apart_reverse(s, left, right);
 	
@@ -157,12 +157,15 @@ void str_reverse(char *s)
 			left = i + 1;
 		}
 	}
+
 	Apart_reverse(s, 0, i - 1);
 }
 
+//main()函数
 int main()
 {
 	char str[30] = "student a am i";
+
 	printf("%s\n", str);
 	str_reverse(str);
 	printf("反转后:\n");
