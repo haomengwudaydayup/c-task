@@ -82,11 +82,14 @@ int main()
 	//int a = 0, b = 0, c = 0;
 	//scanf_s("%d", &a);//缓冲区和前面的格式控制符相关，如果我输入正确的话，就会退出缓冲区，否则你还的输入，因为不满足条件
 	//printf("%d %d %d\n", a, b, c);
+
 	
-	/*int a = 1, b = 2;
+	int a = 1, b = 2;
 	scanf_s("a = %d", &a);
-	scanf_s("b = %d", &b);
-	printf("a = %d, b= %d\n", a, b);*/
+	scanf_s("%d", &b);
+	printf("a = %d, b= %d\n", a, b);
+
+
 	getch();
 	return 0;
 }
