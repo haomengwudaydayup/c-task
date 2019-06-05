@@ -55,19 +55,29 @@ int check(int A)
 		return 0;
 
 }
+
+int check_up(int n, int num_A)
+{
+	if (((num_A - 1) % 5) == 0)
+	{
+		if (n == 1)
+			return 1;//成功退出递归
+		return check_up(n-1, (4 * (num_A - 1) / 5));
+		
+	}
+	else
+		return 0;
+}
 int main()
 {
-	int i = 0;//测试条数
-	while (1)//
+	int i = 6;//测试条数
+	int n = 5;
+	do//
 	{
-
-		if (check(i) == 1)
-		{
-			break;
-		}
-		else
-			i++;
-	}
+		if(check_up(n, i) == 1)
+			printf("sum = %d\n", check_up(n, i));
+		i += 5;
+	} while (check_up(n, i) != 1);
 	getch();
 	return 0;
 }

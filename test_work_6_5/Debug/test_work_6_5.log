@@ -1,0 +1,3 @@
+﻿  test.c
+d:\vs.program\test_work_6_5\test.c(69): warning C4013: “getch”未定义；假设外部返回 int
+  test_work_6_5.vcxproj -> D:\VS.program\test_work_6_5\Debug\test_work_6_5.exe
