@@ -1,0 +1,5 @@
+﻿  test.c
+d:\vs.program\c.code\test_6_15_work\test.c(195): warning C4090: “return”: 不同的“const”限定符
+d:\vs.program\c.code\test_6_15_work\test.c(180): warning C4090: “初始化”: 不同的“const”限定符
+d:\vs.program\c.code\test_6_15_work\test.c(181): warning C4090: “初始化”: 不同的“const”限定符
+  test_6_15_work.vcxproj -> D:\VS.program\c.code\test_6_15_work\Debug\test_6_15_work.exe
