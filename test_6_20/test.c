@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<assert.h>
 #define STU 10
 #define QIAO 10
 
@@ -39,35 +40,41 @@ int int_len(int *p)
 
 int funcation(int *a, int *b, int na, int nb)
 {
-	
+	assert((*a != 0) && (*b != 0));
 	int count = 0;
 	int i = 0, j = 0;
-	for (i = 0; i < na; i++)//质量
+
+	//这样迁移采用for循环堪比恶心至极
+	//2 2 2 
+	//1 1 4
+	/*Markdown:
+		1、巧克力的质量大于等于学生的标准， 巧克力+1，学生+1， count计数器+1
+		2、巧克力的质量小于学生的标准， 巧克力+1，学生不变
+		3、终止条件是到达0（预先设定的零）
+	*/
+/*-------------------------------------*/
+	while ((*a != 0) && (*b != 0))
 	{
-		int ret = 0;
-		for (j = 0; j < nb; j++)//学生
+		if (*a >= *b)
 		{
-			//3
-			//2
-			//5 6 7 8 9 Q
-			//1 2 3 8 9 S
-			if (a[i] >= b[nb - j - 1])
-			{
-				ret = 1;
-				break;
-			}
-		}
-		if(ret == 1)
 			count++;
+			a++;
+			b++;
+		}
+		else
+		{
+			a++;
+		}
 	}
-	if ( (na > nb) && (count < nb))
+/*-------------------------------------*/
+	if ( (na >= nb) && (count < nb))
 		return count;
-	else if ((na > nb) && (count >= nb))
+	else if ((na >= nb) && (count >= nb))
 		return nb;
 
-	if ((na < nb) && (count < na))
+	if ((na <= nb) && (count < na))
 		return count;
-	else if ((na < nb) && (count >= na))
+	else if ((na <= nb) && (count >= na))
 		return na;
 }
 int main()

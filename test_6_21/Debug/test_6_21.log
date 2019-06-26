@@ -1,0 +1,3 @@
+﻿  test.c
+d:\vs.program\c.code\test_6_21\test.c(288): warning C4090: “初始化”: 不同的“const”限定符
+  test_6_21.vcxproj -> D:\VS.program\c.code\test_6_21\Debug\test_6_21.exe
