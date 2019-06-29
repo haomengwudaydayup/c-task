@@ -11,6 +11,7 @@
 #define MAX_SEX 5
 
 #define MAX_NUMPERSIN 1000
+#define INCREAMENT 10
 
 /*个人信息表*/
 typedef struct Personinfo
@@ -26,8 +27,9 @@ typedef struct Personinfo
 /*通讯录*/
 typedef struct Contact
 {
-	Personinfo per[MAX_NUMPERSIN];		//存储每个人的数组
-	int usedSize;
+	Personinfo *per;		//存储每个人的数组
+	int usedSize;			//被使用的个数
+	int capticty;				//容量
 }Contact;
 
 /*初始化个人信息*/
@@ -48,3 +50,5 @@ void Per_PrintContact(Contact *);
 void Modify_Perinfo(Contact *);
 /*排序*/
 void Sort_Contact(Contact *);
+/*摧毁*/
+void Destroy_Contact(Contact *);

@@ -3,21 +3,35 @@
 
 void InitContact(Contact *pCon)			//初始化实现
 {
+	int i = 0;
+	pCon->per = (Personinfo*)malloc(sizeof(Personinfo)*MAX_NUMPERSIN);
+	if (pCon->per == NULL)
+	{
+		return;
+	}
+	pCon->usedSize = MAX_NUMPERSIN;
 	pCon->usedSize = 0;					//使用个数初始化为0
 
-	int i = 0;
-
 	/*初始化个人信息*/
-	for (i = 0; i < MAX_NUMPERSIN; i++)
-	{
-		memset(pCon->per, 0, sizeof(pCon->per));
-	}
+	memset(pCon->per, 0, sizeof(Personinfo)*MAX_NUMPERSIN);
 }
 
 
 /*实现个人信息添加*/
 void AddContact(Contact *pCon)
 {
+	/*判断满的情况，扩容*/
+	if (pCon->usedSize == pCon->capticty)
+	{
+		Personinfo *p = (Personinfo *)realloc(pCon->per, pCon->capticty + INCREAMENT);
+		if (p != NULL)
+		{
+			pCon->per = p;
+			p = NULL;
+			pCon->capticty = MAX_NUMPERSIN + INCREAMENT;
+		}
+	}
+
 	int i = 0;
 	char *name[20] = { 0 };
 	if (pCon->usedSize == MAX_NUMPERSIN)
@@ -244,4 +258,11 @@ void Sort_Contact(Contact *pCon)
 		}
 	}
 	printf("排序成功\n");
+}
+void Destroy_Contact(Contact *pCon)
+{
+	free(pCon->per);
+	pCon->per = NULL;
+	pCon->capticty = 0;
+	pCon->usedSize = 0;
 }

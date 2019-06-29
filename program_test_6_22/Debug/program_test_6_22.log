@@ -1,0 +1,4 @@
+﻿test.obj : error LNK2019: 无法解析的外部符号 _InitContact，该符号在函数 _start 中被引用
+test.obj : error LNK2019: 无法解析的外部符号 _AddContact，该符号在函数 _start 中被引用
+test.obj : error LNK2019: 无法解析的外部符号 _SearchContact，该符号在函数 _start 中被引用
+D:\VS.program\c.code\program_test_6_22\Debug\program_test_6_22.exe : fatal error LNK1120: 3 个无法解析的外部命令

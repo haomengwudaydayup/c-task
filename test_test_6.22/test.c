@@ -3,7 +3,7 @@
 
 enum Option
 {
-	EXIT,  ADD,  SEARCH,  DEL,  SHOW,  CLEAR, MODIFY, SORT,
+	EXIT,  ADD,  SEARCH,  DEL,  SHOW,  CLEAR, MODIFY, SORT,DESTROY,
 };
 
 
@@ -14,7 +14,7 @@ void menu()
 	printf("**        1¡¢ADD      2¡¢SEARCH      **\n");
 	printf("**        3¡¢DEL      4¡¢SHOW        **\n");
 	printf("**        5¡¢CLEAR    6¡¢MODIFY      **\n");
-	printf("**        7¡¢SORT                    **\n");
+	printf("**        7¡¢SORT     8¡¢DESTROY     **\n");
 	printf("**		0¡¢EXIT              **\n");
 	printf("***************************************\n");
 }
@@ -80,10 +80,14 @@ void start()
 			Modify_Perinfo(&pCon);
 	//		printf("----------------------------------\n");
 			break;
-
+			 
 		case SORT:		//ÅÅÐò
 			Sort_Contact(&pCon);
 		//	printf("----------------------------------\n");
+			break;
+		case DESTROY:		//´Ý»Ù
+			Destroy_Contact(&pCon);
+			printf("´Ý»Ù³É¹¦£¡\n");
 			break;
 
 		case EXIT:
@@ -103,7 +107,7 @@ void start()
 			system("cls");
 		}
 	} while (input);
-
+	/*ÊÍ·ÅÄÚ´æ*/
 }
 
 int main()
