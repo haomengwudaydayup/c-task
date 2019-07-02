@@ -1,9 +1,12 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS 1
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<Windows.h>
+#include<vld.h>
+#include<assert.h>
 
 #define MAX_NAME 20
 #define MAX_TELE 20

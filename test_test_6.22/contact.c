@@ -1,5 +1,21 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include"contact.h"
+
+void LoadContact(Contact *pCon)
+{
+	//加载函数
+	int i = 0;
+	Personinfo tmp = { 0 };
+	FILE *fp = fopen("contact_number", "rb");
+	assert(fp != NULL);
+
+	while (fread(&tmp, sizeof(Personinfo), 1, fp))
+	{
+			pCon->per[pCon->usedSize] = tmp;
+			pCon->usedSize++;			//读取成功，相当于每次usedSize加一次
+	} 
+	fclose(fp);
+	fp = NULL;
+}
 
 void InitContact(Contact *pCon)			//初始化实现
 {
@@ -14,23 +30,34 @@ void InitContact(Contact *pCon)			//初始化实现
 
 	/*初始化个人信息*/
 	memset(pCon->per, 0, sizeof(Personinfo)*MAX_NUMPERSIN);
+	
+	/*目的是每次初始化的时候会自动读取数据*/
+	LoadContact(pCon);
 }
 
+/*扩容函数*/
+int Broad_memory(Contact *pCon)
+{
+	if (pCon->per == pCon->usedSize)
+	{
+		Personinfo *p = (Personinfo *)realloc(pCon->per, pCon->capticty + INCREAMENT);
+		if (p != NULL)			//分配内存成功的情况
+		{
+			pCon->per = p;
+			pCon->capticty += INCREAMENT;
+			p = NULL;
+			printf("扩容成功！\n");
+			return 1;
+		}
+	}
+
+	return 0;
+}
 
 /*实现个人信息添加*/
 void AddContact(Contact *pCon)
 {
-	/*判断满的情况，扩容*/
-	if (pCon->usedSize == pCon->capticty)
-	{
-		Personinfo *p = (Personinfo *)realloc(pCon->per, pCon->capticty + INCREAMENT);
-		if (p != NULL)
-		{
-			pCon->per = p;
-			p = NULL;
-			pCon->capticty = MAX_NUMPERSIN + INCREAMENT;
-		}
-	}
+	Broad_memory(pCon);
 
 	int i = 0;
 	char *name[20] = { 0 };
@@ -53,11 +80,13 @@ void AddContact(Contact *pCon)
 			printf("已存在该用户，确定要存放吗\n");
 			printf("1、确定，2、取消本次操作\n");
 			scanf("%d", &input);
+			scanf("%*[^\n]"); scanf("%*c");
 			if (input == 2)
 			{
 				printf("已取消本次操作！\n");
 				return;
 			}
+			break;
 		}
 	}
 	strcpy(pCon->per[pCon->usedSize].name, name);
@@ -130,17 +159,11 @@ void ShowContact(Contact *pCon)
 		return;
 	}
 
+	printf("%-12s%-9s%-9s%-17s%-8s\n", "姓名", "年龄", "性别", "电话", "地址");
 	for (i = 0; i < pCon->usedSize; i++)
 	{
-		if (i == 0)
-		{
-			printf("姓名\t性别\t年龄\t电话\t\t地址\n");
-		}
-		printf("%s\t", pCon->per[i].name);
-		printf("%s\t", pCon->per[i].sex);
-		printf("%d\t", pCon->per[i].age);
-		printf("%s\t", pCon->per[i].tele);
-		printf("%s\n", pCon->per[i].addr);
+		printf("%-12s%-9d%-9s%-17s%-8s\n", pCon->per[i].name, pCon->per[i].age,
+			pCon->per[i].sex, pCon->per[i].tele, pCon->per[i].addr);
 	}
 }
 /*清空信息*/
@@ -148,44 +171,12 @@ void Clearcontact(Contact *pCon)
 {
 	pCon->usedSize = 0;
 }
+
 /*打印个人信息*/
 void Per_PrintContact(Contact *pCon, int n)
 {
-	int input = 0;
-	printf("1、姓名，2、性别，3、年龄，4、电话号码，5、地址，6、全部打印，0、退出\n");
-	do
-	{
-		printf("请选择>");
-		scanf("%d", &input);
-		switch (input)
-		{
-		case 1:
-			printf("姓名：%s\n", pCon->per[n].name);
-			break;
-		case 2:
-			printf("性别：%s\n", pCon->per[n].sex);
-			break;
-		case 3:
-			printf("年龄：%d\n", pCon->per[n].age);
-			break;
-		case 4:
-			printf("电话号码：%s\n", pCon->per[n].tele);
-			break;
-		case 5:
-			printf("地址：%s\n", pCon->per[n].addr);
-			break;
-		case 6:
-			printf("姓名：%s\t性别：%s\t年龄：%d\t电话号码：%s\t地址：%s\n", pCon->per[n].name, 
-				pCon->per[n].sex, pCon->per[n].age, pCon->per[n].tele, pCon->per[n].addr);
-			break;
-		case 0:
-			printf("退出成功！\n");
-		default:
-			printf("错误选择，请重新输入！\n");
-			scanf("%d", &input);
-			break;
-		}
-	} while (input);
+	printf("姓名：%s\t性别：%s\t年龄：%d\t电话号码：%s\t地址：%s\n", pCon->per[n].name,
+		pCon->per[n].sex, pCon->per[n].age, pCon->per[n].tele, pCon->per[n].addr);
 }
 /*修改个人信息*/
 void Modify_Perinfo(Contact *pCon)
@@ -225,42 +216,48 @@ void Modify_Perinfo(Contact *pCon)
 /*排序（根据姓名）*/
 void Sort_Contact(Contact *pCon)
 {
-	//试试冒泡排序
+	//冒泡排序
 	int i = 0, j = 0;
 	for (i = 0; i < pCon->usedSize - 1; i++)
 	{
 		for (j = 0; j < pCon->usedSize - 1 - i; j++)
 		{
-			if (strcmp(pCon->per[j].name,pCon->per[j + 1].name) > 0)
+			int flag = 0;			//冒泡排序优化
+			if ((strcmp(pCon->per[j].name,pCon->per[j + 1].name)) > 0)
 			{
-				char str[20] = { 0 };
-				int tmp = 0;
-				strcpy(str, pCon->per[j].name);
-				strcpy(pCon->per[j].name, pCon->per[j + 1].name);
-				strcpy(pCon->per[j + 1].name, str);
-
-				tmp = pCon->per[j].age;
-				pCon->per[j].age = pCon->per[j + 1].age;
-				pCon->per[j + 1].age = tmp;
-
-				strcpy(str, pCon->per[j].tele);
-				strcpy(pCon->per[j].tele, pCon->per[j + 1].tele);
-				strcpy(pCon->per[j + 1].tele, str);
-
-				strcpy(str, pCon->per[j].addr);
-				strcpy(pCon->per[j].addr, pCon->per[j + 1].addr);
-				strcpy(pCon->per[j + 1].addr, str);
-
-				strcpy(str, pCon->per[j].sex);
-				strcpy(pCon->per[j].sex, pCon->per[j + 1].sex);
-				strcpy(pCon->per[j + 1].sex, str);
+				Personinfo tmp = pCon->per[j];
+				pCon->per[j] = pCon->per[j + 1];
+				pCon->per[j + 1] = tmp;
+				flag = 1;
+			}
+			if (flag == 0)
+			{
+				break;
 			}
 		}
 	}
 	printf("排序成功\n");
 }
+
+void keepContact(Contact *pCon)
+{
+	int i = 0;
+	FILE *fp = fopen("contact_number", "wb");
+	assert(fp != NULL);
+	for (i = 0; i < pCon->usedSize; i++)
+	{
+		fwrite(&(pCon->per[i]), sizeof(Personinfo), 1, fp);
+	}
+	printf("存档成功！\n");
+	fclose(fp);
+	fp = NULL;
+}
+
 void Destroy_Contact(Contact *pCon)
 {
+	/*存储函数*/
+	keepContact(pCon);
+
 	free(pCon->per);
 	pCon->per = NULL;
 	pCon->capticty = 0;
