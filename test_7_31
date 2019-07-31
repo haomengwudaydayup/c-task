@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#if 0
+int main()
+{
+	short a = 01001;
+	int b = -01110;
+	long c = 1001;
+	unsigned short m = -10101;
+	unsigned int n = -10000;
+	unsigned long p = 1111;
+	printf("a = %hu, b = %u, c = %lu\n", a, b, c);
+	system("pause");
+	return 0;
+}
+#elif 0
+#define MA(x, y) (x * y)
+int main()
+{
+	int i =  5;
+	int b = MA(i, i + 1) - 7;
+	printf("b = %d\n", b);
+	system("pause");
+	return 0;
+}
+
+#elif 1
+#define sum(a, b, c) a+b+c
+int main()
+{
+	int i = 3;
+	int j = 2;
+	printf("%d\n", i * sum(i, (i + j), j));
+	system("pause");
+	return 0;
+}
+#endif // 0
+
