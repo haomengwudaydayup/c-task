@@ -1,0 +1,254 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+#if 0
+void Fnid_val(int *arr, int row, int col, int key)
+{
+	int tmpRow = 0;			//0
+	int tmpCol = col - 1;	//3
+
+	while (tmpCol >= 0 && tmpRow < row)
+	{
+		if (arr[tmpRow*col + tmpCol] > key)
+		{
+			tmpCol--;
+		}
+		else if (arr[tmpRow*col + tmpCol] < key)
+		{
+			tmpRow++;
+		}
+		else
+		{
+			printf("找到拉， 在第%d行第%d列\n", tmpRow + 1, tmpCol + 1);
+			return;
+		}
+	}
+	printf("没找到\n");
+}
+
+int main()
+{
+	//0,3
+	int arr[4][4] = { 1,2,8,9,
+							2,4,9,12,
+							4,7,10,13,
+							6,8,11,15 };
+
+	Fnid_val((int*)arr, 4, 4, 11);
+	system("pause");
+	return 0;
+}
+
+#elif 0
+
+#define ROW 3
+void Func2(int arr[][ROW])
+{
+	int tmpRow = 0;
+	int tmpCol = ROW / 2;
+	int i = 2;
+	arr[tmpRow][tmpCol] = 1;
+	//2-n^2
+	for (i = 2; i <= ROW * ROW; i++)
+	{
+		if (arr[(tmpRow - 1 + ROW) % ROW][(tmpCol + 1) % ROW] == 0)
+		{
+			arr[(tmpRow - 1 + ROW) % ROW][(tmpCol + 1) % ROW] = i;
+			tmpRow = (tmpRow - 1 + ROW) % ROW;
+			tmpCol = (tmpCol +1) % ROW;
+		}
+		else if (arr[(tmpRow - 1 + ROW) % ROW][(tmpCol + 1) % ROW] != 0)
+		{
+			arr[(tmpRow + 1 + ROW) % ROW][tmpCol % ROW] = i;
+			tmpRow = (tmpRow + 1 + ROW) % ROW;
+			tmpCol = tmpCol % ROW;
+		}
+	}
+}
+
+int main()
+{
+	int arr[3][3] = { 0 };
+	Func2(arr);
+	int i = 0, j = 0;
+	for (i = 0; i < ROW; i++)
+	{
+		for (j = 0; j < ROW; j++)
+		{
+			printf("%d  ", arr[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+	system("pause");
+	return 0;
+}
+
+#elif 0
+
+void Replace_blank(char *dest, const char*src, const int len)
+{
+	int count = 0;
+	char *p = dest;
+	char *q = NULL;
+	while (*p != '\0')
+	{
+		p++;
+		if (*p == ' ')
+		{
+			count++;
+		}
+	}
+	q = p + (count * 2);
+
+	while ((p - dest) >=0)
+	{
+		/*判断不等于空的情况*/
+		if (*p != ' ')
+		{
+			*q = *p;
+			p--;		//p--为了下次判断
+			q--;		//q--为了下次判断
+		}
+		/*判断等于空的情况*/
+		else if(*p == ' ')
+		{
+			/*采用小循环实现%20的插入*/
+			for(int i =2; i >= 0; i--)
+			{
+				*q = *(src + i);
+				q--;		//q--为了下次判断
+			}
+			p--;		//p--为了下次判断
+		}
+	}
+}
+
+int main()
+{
+	char dest[40] = "abc defgx yz";
+	char *src = "%20";
+	int len = sizeof(dest) / sizeof(dest[0]);
+	
+	/*调用操作函数*/
+	Replace_blank(dest, src, len);
+	puts(dest);
+	system("pause");
+	return 0;
+}
+
+#elif 0
+
+void reduse_equal_char(char*arr)
+{
+	int len = strlen(arr);
+	int i = 0;
+	int j = 0;
+	int x = 0;
+	int vol = 0;
+	char count = 1;
+	for (i = 0; i < len; i += 2)//基准
+	{
+		count = 1;//一次计数完后重新归为零
+		for (j = i + 1; j < len; j++)//判断相同,并计数
+		{
+			if (arr[i] == arr[j])
+			{
+				count++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if (count > 1)//有相同的进入,开始压缩
+		{
+			arr[i] = count;
+			x = i + 2;
+			while (arr[x] != '\0')
+			{
+				arr[x] = arr[x + count - 2];
+				x++;
+			}
+			len -= count - 2;
+		}
+	}
+}
+
+int main()
+{
+	char arr[] = "xxxxyyyyyyyz";
+	reduse_equal_char(arr);
+	printf("%s", arr);
+	system("pause");
+	return 0;
+}
+
+
+#elif 0
+
+void foo(int b[][3])
+{
+	++b;
+	b[1][1] = 9;
+	printf("&b[1][1] = %p\n", &b[1][1]);
+}
+int main()
+{
+	int a[3][3] = { {1,2,3}, {4,5,6}, {7,8,9} };
+	foo(a);
+	printf("%d\n", a[2][1]);
+	printf("&a[2][1] = %p\n", &a[2][1]);
+	system("pause");
+	return 0;
+}
+
+#elif 1
+
+void func(char *dest, const int len)
+{
+	int count = 1;
+	char *p = dest + 1;
+	char tmp[30] = { 0 };
+	int i = 0;
+	while (*p != '\0')
+	{
+		if (*p == *(p - 1))
+		{
+			count++;
+			p++;
+		}
+		else if (*p != *(p - 1) )
+		{
+			tmp[i] = count + 48;
+			i++;
+			tmp[i] = *(p - 1);
+			i++;
+			count = 1;
+			p++;
+		}
+	}
+
+	{
+		tmp[i] = count + 48;
+		i++;
+		tmp[i] = *(p - 1);
+		i++;
+	}
+	strcpy(dest, tmp);
+}
+
+int main()
+{
+	char dest[20] = "";
+	int len = sizeof(dest) / sizeof(dest[0]);
+	func(dest, len);
+	puts(dest);
+	system("pause");
+	return 0;
+}
+#endif // 0
+
+
