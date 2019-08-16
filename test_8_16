@@ -1,0 +1,191 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
+
+#if 0
+int F_Jump(int n)
+{
+	int M1 = 1;
+	int M2 = 2;
+	int M3 = 0;
+	int  i = 0;
+	assert(n > 0);
+	if (n == 1)
+	{
+		return M1;
+	}
+	else if (n == 2)
+	{
+		return M2;
+	}
+	else
+	{
+		for (i = 3; i <= n; i++)
+		{
+			M3 = M1 + M2;
+			M1 = M2;
+			M2 = M3;
+		}
+	}
+	return M3;
+}
+
+int main()
+{
+	int n = 0;
+	printf("请输入台阶数\n");
+	scanf("%d", &n);
+	printf("可能的次数为%d\n", F_Jump(n));
+	system("pause");
+	return 0;
+}
+
+#elif 0
+
+void Move(char pos1, char pos2)
+{
+	printf("%c->%c ", pos1, pos2);
+}
+/*
+n:代表盘子个数
+pos1：
+pos2:
+pos3:
+*/
+void Hanota(int n, char pos1, char pos2, char pos3)
+{
+	//终止条件
+	//递归调用
+	if (n == 1)
+	{
+		Move(pos1, pos3);
+	}
+	else
+	{
+		
+		Hanota(n - 1, pos1, pos3, pos2);
+		Move(pos1, pos3);
+		Hanota(n - 1, pos2, pos1, pos3);
+	}
+}
+int main()
+{
+//	Hanota(1, 'A', 'B', 'C');
+//	Hanota(2, 'A', 'B', 'C');
+	Hanota(3, 'A', 'B', 'C');
+	system("pause");
+	return 0;
+}
+
+
+#elif 0
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize)
+{
+	int i = 0;
+	int j = i;
+
+
+	for (i = 0; i < numsSize; i++)
+	{
+		for (j = i; j < numsSize; j++)
+		{
+			if (nums[i] + nums[j] == target)     //找到的情况
+			{
+				returnSize[0] = i;
+				returnSize[1] = j;
+				return returnSize;
+			}
+		}
+	}
+	return NULL;
+
+}
+
+int main()
+{
+	int nums[4] = { 2, 7, 11, 15 };
+	int len = sizeof(nums) / sizeof(nums[0]);
+	int returnSize[2] = { 0 };
+	int target = 0;
+	int *ptr = NULL;
+	printf("请输入您想查找的目标值target:");
+	scanf("%d", &target);
+
+	ptr = twoSum(nums, len, target, returnSize);
+
+	if (ptr == NULL)
+	{
+		printf("没有找到！\n");
+	}
+	else
+		printf("[%d,%d]\n", ptr[0], ptr[1]);
+
+	system("pause");
+	return 0;
+
+}
+
+#elif 1
+
+int Judge(char *str1, int pos1, int pos2)
+{
+	for (pos1 = 0; pos1 < pos2; pos1++)
+	{
+		if (pos2 == 1)
+		{
+			return 1;
+		}
+		if (str1[pos2] - str1[pos1] == 0)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int main()
+{
+	char *str = "abcabcd";
+
+	int lengh = 0;					//长度
+	int count = 0;					//计数器
+	char str1[20] = { 0 };			//字串
+	int pos1 = 0;					//位标
+	int pos2 = 0;					//位标
+	int i = 0;
+
+	while (*str != '\0')
+	{
+		char *temp = str;
+
+		while (*temp)
+		{
+			if (Judge(str1, pos1, pos2))		//这是正确的情况
+			{
+				str1[pos2] = *temp;				//存放字符串的数组存放值
+				pos2++;								//存放成功一个值之后会右移一位
+				count++;								//计数器加1
+			}
+			else    //这是失败的情况
+			{
+				if (count > lengh)		//这是每次判断当前的最大长度
+				{
+					lengh = count;
+				}
+				count = 0;					//失败后重新赋值为0
+				pos2 = 0;						//失败后重新复制为0
+				memset(str1, 0, sizeof(str1)*sizeof(int));		//存放字符串的数组也清空!
+			}
+			temp++;
+		}
+		str++;
+	}
+
+	printf("lengh = %d\n", lengh);		//目的是输出lengh的值
+	system("pause");
+	return 0;
+}
+#endif // 0
+
